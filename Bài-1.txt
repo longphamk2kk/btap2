@@ -1,0 +1,42 @@
+_ M?t module là m?t file. Hay là "One script is one module". Nh?ng module có th? load nhi?u function b?i hai keywords d?c bi?t dó là Import và Export. Và d?c bi?t module này có th? g?i và s? d?ng m?t module khác.
+1. Export
+Có 2 lo?i export dó là named và default:
++ Named Export:
+Trong JavaScript , named export du?c s? d?ng d? xu?t nhi?u th? t? m?t module b?ng cách thêm keyword export vào khai báo c?a chúng. Nh?ng th? du?c export s? du?c phân bi?t b?ng tên. Sau dó import nh?ng th? chúng ta c?n s? d?ng b?ng cách bao quanh chúng c?p d?u ngo?c nh?n { }. Tên c?a module dã nh?p ph?i gi?ng v?i tên c?a module dã xu?t.
+export function addTwoNumbers(x,y){
+  return x + y
+}
+export let students = ['wisdom','bill','fred','grim']
++ Default Export:
+Trong Javascript  ch? cho phép xu?t m?t m?c d?nh cho m?i file. Default Export có th? cho m?t function, class ho?c m?t object.
+export default function () {
+  alert("Hello Default Export")
+}
++Default + Named export:
+B?n có th? cùng lúc s? d?ng default export và named export trong 1 file
+export const name1 = 'value1';
+export const name2 = 'value2';
+export default 'value2';
+
+import anyName, { name1, name2 } from '/modules/my-module.js';
+console.log(anyName); // 'value2'
+console.log(name); // 'value1'
++Ð?i tên Export
+N?u không thích tên du?c export, b?n có th? d?i tên nó b?ng cách s? d?ng t? khóa as
+const name = 'value';
+export { name as newName };
+
+import { newName } from '/modules/my-module.js';
+console.log(newName); 
+console.log(name);
+2 Import
+Ð? import m?t module vào m?t script thì b?n có th? s? d?ng import. Ví d? chúng ta có nh?ng module dùng named export thì b?n có th? import nhu th? này.
+ import { addTwoNumbers, students } from 'util';
++Importing with alias:
+import * as util from 'util';
+
+console.log(util.addTwoNumbers(2,13))
+console.log(util.students)
+Ngoài ra b?n cung có th? s? d?ng alias "as" d? d?nh danh l?i n?u chua quen thu?c ho?c tu? theo d? án c?a mình:
+import {sayHi as hi, sayBye as bye} from './say.js';
+
